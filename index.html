@@ -14,10 +14,10 @@
       --card: rgba(255,255,255,0.68);
       --line: rgba(17,24,39,0.08);
       --shadow: 0 16px 40px rgba(244,114,182,0.18);
-      --radius: 28px;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -47,6 +47,7 @@
       opacity: 0.45;
       pointer-events: none;
     }
+
     .glow.a { width: 180px; height: 180px; left: -40px; top: -20px; background: white; }
     .glow.b { width: 220px; height: 220px; right: -50px; bottom: -30px; background: #f9a8d4; }
 
@@ -83,8 +84,10 @@
 
     .hero-card,
     .card {
-      padding: 16px;
-      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
     }
 
     .hero-card {
@@ -92,6 +95,7 @@
       padding: 10px;
       position: relative;
       overflow: hidden;
+      border-radius: 24px;
     }
 
     .badge {
@@ -112,7 +116,7 @@
 
     .hero-image-wrap {
       position: relative;
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       aspect-ratio: 4 / 3;
       background: #e5e7eb;
@@ -180,8 +184,11 @@
       text-align: center;
       color: #6b7280;
     }
-    .footer-note .small { font-size: 12px; }
-    .footer-note .tiny { font-size: 11px; margin-top: 6px; }
+
+    .footer-note .tiny {
+      font-size: 11px;
+      margin-top: 6px;
+    }
 
     .hidden { display: none !important; }
 
@@ -192,8 +199,9 @@
     }
 
     .card {
-      padding: 20px;
-      margin-top: 18px;
+      padding: 16px;
+      margin-top: 16px;
+      border-radius: 24px;
     }
 
     label {
@@ -237,9 +245,244 @@
     }
 
     .q-card {
-        padding: 13px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(249,115,22,0.07);
+      margin-bottom: 12px;
+    }
+
+    .q-title {
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .opt {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(17,24,39,0.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.94);
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      cursor: pointer;
+      margin-bottom: 9px;
+      word-break: break-word;
+      color: #374151;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    .opt.active {
+      background: #ffe7c2;
+      color: #7c2d12;
+      border-color: #fdba74;
+      box-shadow: 0 8px 18px rgba(251,146,60,0.16);
+    }
+
+    .opt-key {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.06);
+      margin-right: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      flex: 0 0 24px;
+      color: #6b7280;
+    }
+
+    .opt.active .opt-key {
+      background: rgba(124,45,18,0.10);
+      color: #9a3412;
+    }
+
+    .result-hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fff7ed 35%, #fdf2f8 68%, #eef2ff 100%);
+      border-radius: 26px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: 0 18px 40px rgba(249,115,22,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-badge {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: #111827;
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 7px 12px;
+      border-radius: 999px;
+      transform: rotate(5deg);
+    }
+
+    .result-name {
+      font-size: 30px;
+      line-height: 1.05;
+      font-weight: 900;
+      margin: 10px 0 8px;
+    }
+
+    .result-sub {
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .result-copy {
+      margin-top: 14px;
+      line-height: 1.75;
+      font-size: 14px;
+      color: #1f2937;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .top5-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(249,115,22,0.08);
+    }
+
+    .top5-name {
+      font-size: 22px;
+      font-weight: 900;
+      margin: 4px 0;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .profile-item {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(17,24,39,0.05);
+      border-radius: 16px;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 18px 14px 30px;
+      }
+
+      .container {
+        max-width: 100%;
+      }
+
+      .pill {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+
+      h1 {
+        margin: 14px 0 8px;
+        font-size: 24px;
+        line-height: 1.08;
+      }
+
+      .sub {
+        max-width: 290px;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .hero-card,
+      .card,
+      .result-hero,
+      .top5-card,
+      .q-card {
+        border-radius: 20px;
+      }
+
+      .hero-card {
+        margin-top: 14px;
+        padding: 8px;
+      }
+
+      .badge,
+      .result-badge {
+        font-size: 10px;
+        padding: 6px 10px;
+      }
+
+      .hero-image-wrap {
+        border-radius: 18px;
+      }
+
+      .hero-copy {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .hero-title {
+        font-size: 16px;
+      }
+
+      .button {
+        border-radius: 18px;
+        padding: 13px 14px;
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 14px;
+        margin-top: 14px;
+      }
+
+      input,
+      select {
+        border-radius: 14px;
+        padding: 11px 12px;
+        font-size: 14px;
+      }
+
+      .actions {
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .topbar {
+        gap: 8px;
         margin-bottom: 12px;
-      }important;
+      }
+
+      .topbar > div:first-child > div:nth-child(2) {
+        font-size: 16px !important;
+        line-height: 1.28 !important;
+        margin-top: 8px !important;
+      }
+
+      .topbar .button.secondary {
+        width: auto !important;
+        min-width: 88px;
+        padding: 9px 10px !important;
         font-size: 13px !important;
         border-radius: 16px;
       }
@@ -249,20 +492,177 @@
       }
 
       .q-card {
-        padding: 14px;
-        margin-bottom: 10px;
+        padding: 13px;
+        margin-bottom: 12px;
       }
 
       .q-title {
         font-size: 15px;
         line-height: 1.55;
-       .opt {
+        margin-bottom: 10px;
+      }
+
+      .opt {
         border-radius: 16px;
         padding: 11px;
         font-size: 13px;
         line-height: 1.55;
         margin-bottom: 9px;
-      }div>
+      }
+
+      .opt-key {
+        width: 22px;
+        height: 22px;
+        margin-right: 7px;
+        font-size: 11px;
+        flex: 0 0 22px;
+      }
+
+      .result-hero {
+        padding: 14px;
+      }
+
+      .result-name {
+        font-size: 24px;
+        margin: 8px 0 6px;
+      }
+
+      .result-sub {
+        font-size: 13px;
+      }
+
+      .result-copy {
+        margin-top: 12px;
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .top5-card {
+        padding: 12px;
+      }
+
+      .top5-name {
+        font-size: 18px;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+      }
+
+      .profile-item {
+        padding: 9px 10px;
+        font-size: 12px;
+        border-radius: 14px;
+      }
+    }
+
+    @media (min-width: 520px) {
+      .container { max-width: 480px; }
+      h1 { font-size: 42px; }
+      .sub { max-width: 360px; font-size: 15px; }
+      .q-title { font-size: 18px; }
+      .result-name { font-size: 38px; }
+      .top5-name { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow a"></div>
+  <div class="glow b"></div>
+
+  <main class="page">
+    <div class="container">
+      <section id="home-screen">
+        <div class="center">
+          <span class="pill">🎭 喜人宇宙搭档测试</span>
+          <h1>测测在喜人宇宙里<br>谁是你的天选搭档</h1>
+          <p class="sub">结合你的生日、MBTI和10道题，看看哪位喜人艺人和你最合拍</p>
+        </div>
+
+        <div class="hero-card">
+          <div class="badge">Amazing Night</div>
+          <div class="hero-image-wrap">
+            <img src="./IMG_0804 3.jpg" alt="喜人拼贴图" class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="hero-copy">
+              <div class="hero-kicker">Comedy Club</div>
+              <div class="hero-title">看看谁最适合<br>和你搭成一队</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <button class="button" id="start-btn">开始测试</button>
+        </div>
+
+        <div class="footer-note">
+          <div>创作：拿铁柚子云</div>
+          <div class="tiny">本测试仅供娱乐，结果看看就好，开心最重要。</div>
+        </div>
+      </section>
+
+      <section id="form-screen" class="hidden">
+        <div class="card">
+          <div class="pill" style="font-size:12px;padding:8px 12px;">进入测试前</div>
+          <h2 class="section-title" style="margin-top:10px;">基本信息</h2>
+
+          <div class="field">
+            <label>昵称（选填）</label>
+            <input id="nickname" placeholder="输入你的昵称">
+          </div>
+
+          <div class="field">
+            <label>性别（可选）</label>
+            <select id="gender">
+              <option value="">请选择</option>
+              <option value="女">女</option>
+              <option value="男">男</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>出生年月日（必填）</label>
+            <input id="birthday" type="date">
+          </div>
+
+          <div class="field">
+            <label>MBTI（必填）</label>
+            <select id="mbti"></select>
+          </div>
+
+          <div class="actions">
+            <button class="button secondary" id="back-home-btn">返回</button>
+            <button class="button" id="to-quiz-btn">继续</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="hidden">
+        <div class="topbar">
+          <div>
+            <div class="pill" style="font-size:12px;padding:8px 12px;">正在匹配中</div>
+            <div style="margin-top:10px;font-size:28px;font-weight:900;line-height:1.2;">10道题，看看你最适合哪种喜人搭档</div>
+            <div class="progress" id="progress-text">已完成 0 / 10</div>
+          </div>
+          <button class="button secondary" id="back-form-btn" style="width:auto;padding:10px 14px;font-size:14px;">返回修改信息</button>
+        </div>
+        <div id="questions-wrap"></div>
+        <button class="button" id="to-result-btn">查看结果</button>
+      </section>
+
+      <section id="result-screen" class="hidden">
+        <div class="topbar" style="align-items:flex-end;">
+          <div>
+            <div style="font-size:13px;color:#6b7280;">你的搭档类型</div>
+            <div id="result-type-title" style="font-size:34px;font-weight:900;line-height:1.1;"></div>
+          </div>
+          <button class="button secondary" id="redo-btn" style="width:auto;padding:10px 14px;font-size:14px;">重新做题</button>
+        </div>
+
+        <div class="result-hero">
+          <div class="result-badge">最佳搭档揭晓</div>
+          <div style="font-size:13px;color:#6b7280;">你的天选搭档</div>
           <div class="result-name" id="top1-name"></div>
           <div class="result-sub" id="top1-meta"></div>
           <div class="result-copy" id="top1-copy"></div>
@@ -476,7 +876,7 @@
         ["高能点火型", e],
         ["稳定兜底型", s],
         ["脑洞共振型", b],
-      ].sort((a,b) => b[1]-a[1]);
+      ].sort((a,b) => b[1] - a[1]);
       const top = all[0][0];
       const second = all[1][0];
       if (top === "高能点火型" && second === "脑洞共振型") return "欢喜冤家型";
@@ -500,6 +900,14 @@
       return null;
     }
 
+    function getZodiacElement(sign) {
+      if (["白羊座", "狮子座", "射手座"].includes(sign)) return "火";
+      if (["金牛座", "处女座", "摩羯座"].includes(sign)) return "土";
+      if (["双子座", "天秤座", "水瓶座"].includes(sign)) return "风";
+      if (["巨蟹座", "天蝎座", "双鱼座"].includes(sign)) return "水";
+      return null;
+    }
+
     function getArtistPartnerTags(artist) {
       const keywords = artist.personality_keywords || [];
       const mbti = artist.mbti || "";
@@ -509,13 +917,13 @@
       let secondary = null;
 
       const keywordCats = keywords.map(getKeywordCategory).filter(Boolean);
-      const counts = keywordCats.reduce((acc, cat) => { acc[cat] = (acc[cat]||0)+1; return acc; }, {});
+      const counts = keywordCats.reduce((acc, cat) => { acc[cat] = (acc[cat] || 0) + 1; return acc; }, {});
       const keywordScore = {
-        high: (counts.energy||0) + (counts.spark||0),
-        stable: (counts.support||0) + (counts.structure||0),
-        brainy: (counts.brain||0) + (counts.improv||0),
+        high: (counts.energy || 0) + (counts.spark || 0),
+        stable: (counts.support || 0) + (counts.structure || 0),
+        brainy: (counts.brain || 0) + (counts.improv || 0),
       };
-      const bestKeywordBucket = Object.entries(keywordScore).sort((a,b)=>b[1]-a[1])[0];
+      const bestKeywordBucket = Object.entries(keywordScore).sort((a,b) => b[1] - a[1])[0];
       if (bestKeywordBucket && bestKeywordBucket[1] > 0) {
         if (bestKeywordBucket[0] === 'high') primary = '高能点火型';
         if (bestKeywordBucket[0] === 'stable') primary = '稳定兜底型';
@@ -599,14 +1007,6 @@
       return Math.max(0, Math.min(20, Number(score.toFixed(2))));
     }
 
-    function getZodiacElement(sign) {
-      if (["白羊座", "狮子座", "射手座"].includes(sign)) return "火";
-      if (["金牛座", "处女座", "摩羯座"].includes(sign)) return "土";
-      if (["双子座", "天秤座", "水瓶座"].includes(sign)) return "风";
-      if (["巨蟹座", "天蝎座", "双鱼座"].includes(sign)) return "水";
-      return null;
-    }
-
     function getZodiacScore(userSign, artistSign) {
       if (!userSign || !artistSign) return 7.5;
       if (userSign === artistSign) return 15;
@@ -645,7 +1045,7 @@
 
     function getKeywordScore(userProfile, artistKeywords) {
       if (!artistKeywords || artistKeywords.length === 0) return 8;
-      const top3 = Object.entries(userProfile).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k]) => k);
+      const top3 = Object.entries(userProfile).sort((a,b) => b[1] - a[1]).slice(0,3).map(([k]) => k);
       let score = 0;
       artistKeywords.forEach(kw => {
         const cat = getKeywordCategory(kw);
