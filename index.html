@@ -66,33 +66,30 @@
     .center { text-align: center; }
 
     h1 {
-      margin: 24px 0 12px;
-      font-size: 34px;
+      margin: 18px 0 10px;
+      font-size: 28px;
       line-height: 1.08;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.05em;
       font-weight: 900;
     }
 
     .sub {
       margin: 0 auto;
-      max-width: 360px;
+      max-width: 320px;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
+      font-size: 14px;
+      line-height: 1.65;
     }
 
     .hero-card,
     .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.72);
-      backdrop-filter: blur(16px);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
+      padding: 16px;
+      margin-top: 16px;
     }
 
     .hero-card {
-      margin-top: 22px;
-      padding: 14px;
+      margin-top: 18px;
+      padding: 10px;
       position: relative;
       overflow: hidden;
     }
@@ -153,19 +150,19 @@
 
     .hero-title {
       margin-top: 8px;
-      font-size: 18px;
-      line-height: 1.25;
+      font-size: 17px;
+      line-height: 1.22;
       font-weight: 900;
     }
 
     .button {
       width: 100%;
       border: 0;
-      border-radius: 24px;
+      border-radius: 20px;
       background: #111827;
       color: white;
-      padding: 16px 18px;
-      font-size: 17px;
+      padding: 14px 16px;
+      font-size: 16px;
       font-weight: 900;
       cursor: pointer;
       box-shadow: 0 14px 30px rgba(17,24,39,0.18);
@@ -189,7 +186,7 @@
     .hidden { display: none !important; }
 
     .section-title {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 900;
       margin: 0;
     }
@@ -210,9 +207,9 @@
     input, select {
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 18px;
+      border-radius: 16px;
       background: rgba(255,255,255,0.92);
-      padding: 14px 16px;
+      padding: 12px 14px;
       font-size: 15px;
       outline: none;
     }
@@ -223,49 +220,50 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .topbar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
     .progress {
       color: #4b5563;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .q-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(255,255,255,0.72);
-      border-radius: 26px;
-      padding: 18px;
+      border-radius: 22px;
+      padding: 16px;
       box-shadow: 0 10px 24px rgba(249,115,22,0.08);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .q-title {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.6;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .opt {
       width: 100%;
       text-align: left;
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 18px;
       background: rgba(255,255,255,0.92);
-      padding: 14px;
-      font-size: 15px;
-      line-height: 1.7;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.6;
       cursor: pointer;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
+      word-break: break-word;
     }
 
     .opt.active {
@@ -276,15 +274,16 @@
 
     .opt-key {
       display: inline-flex;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
       align-items: center;
       justify-content: center;
       background: rgba(0,0,0,0.06);
-      margin-right: 10px;
-      font-size: 13px;
+      margin-right: 8px;
+      font-size: 12px;
       font-weight: 800;
+      flex: 0 0 24px;
     }
 
     .opt.active .opt-key {
@@ -294,8 +293,8 @@
 
     .result-hero {
       background: linear-gradient(135deg, #ffffff 0%, #fff7ed 35%, #fdf2f8 68%, #eef2ff 100%);
-      border-radius: 32px;
-      padding: 22px;
+      border-radius: 26px;
+      padding: 18px;
       border: 1px solid rgba(255,255,255,0.75);
       box-shadow: 0 18px 40px rgba(249,115,22,0.12);
       position: relative;
@@ -305,18 +304,18 @@
     .result-badge {
       position: absolute;
       top: 10px;
-      right: 16px;
+      right: 14px;
       background: #111827;
       color: white;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 999px;
       transform: rotate(5deg);
     }
 
     .result-name {
-      font-size: 38px;
+      font-size: 30px;
       line-height: 1.05;
       font-weight: 900;
       margin: 10px 0 8px;
@@ -324,13 +323,13 @@
 
     .result-sub {
       color: #374151;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .result-copy {
-      margin-top: 16px;
-      line-height: 1.85;
-      font-size: 15px;
+      margin-top: 14px;
+      line-height: 1.75;
+      font-size: 14px;
       color: #1f2937;
     }
 
@@ -342,13 +341,13 @@
     .top5-card {
       background: rgba(255,255,255,0.75);
       border: 1px solid rgba(255,255,255,0.72);
-      border-radius: 24px;
-      padding: 16px;
+      border-radius: 22px;
+      padding: 14px;
       box-shadow: 0 10px 24px rgba(249,115,22,0.08);
     }
 
     .top5-name {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
       margin: 4px 0;
     }
@@ -367,23 +366,29 @@
     .profile-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     .profile-item {
       background: rgba(255,255,255,0.88);
       border: 1px solid rgba(17,24,39,0.05);
-      border-radius: 18px;
-      padding: 12px 14px;
+      border-radius: 16px;
+      padding: 10px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     @media (min-width: 520px) {
       .container { max-width: 480px; }
+      h1 { font-size: 42px; }
+      .sub { max-width: 360px; font-size: 15px; }
+      .q-title { font-size: 18px; }
+      .result-name { font-size: 38px; }
+      .top5-name { font-size: 24px; }
+    }
       h1 { font-size: 44px; }
     }
   </style>
@@ -999,16 +1004,14 @@
       document.getElementById('top1-meta').textContent = `匹配度 ${first.percent}% · ${first.partnerType}`;
       document.getElementById('top1-copy').textContent = first.copy;
 
-      document.getElementById('top5-wrap').innerHTML = result.top5.map((artist, idx) => `
+      document.getElementById('top5-wrap').innerHTML = result.top5.slice(1).map((artist, idx) => `
         <div class="top5-card">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
-            <div style="font-size:12px;color:#6b7280;">TOP ${idx + 1}</div>
+            <div style="font-size:12px;color:#6b7280;">TOP ${idx + 2}</div>
             <div>🎬</div>
           </div>
           <div class="top5-name">${artist.name}</div>
           <div style="color:#374151;font-size:14px;">匹配度 ${artist.percent}%</div>
-          <div class="chip">${artist.partnerType}</div>
-          <div style="margin-top:10px;color:#374151;line-height:1.75;font-size:14px;">${artist.copy}</div>
         </div>
       `).join('');
 
@@ -1048,9 +1051,26 @@
       computeResult();
       renderResult();
       showScreen('result');
+      window.scrollTo({ top: 0, behavior: 'auto' });
     });
 
     showScreen('home');
   </script>
 </body>
 </html>
+```
+
+把这段直接存成 `index.html`，和你的图片 `IMG_0804 3.jpg` 放在同一个文件夹里，然后：
+
+- 在 Finder 里双击 `index.html`
+- 或右键用浏览器打开
+
+就能直接跑了。
+
+你现在这套是**纯前端静态网页**，所以：
+- 不需要 Python
+- 不需要 npm
+- 不需要 React 环境
+- 只要浏览器就能开
+
+你先照这个做。开起来以后，如果你要，我下一步再帮你把**艺人数据补成全量版本**。
