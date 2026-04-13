@@ -508,34 +508,87 @@
     ];
 
     const artists = [
+      { name: "卜宇鑫", gender: "男", birthday_raw: "1989-04-26", birth_month: 4, birth_day: 26, zodiac: "金牛座", chinese_zodiac: "蛇", season: "春", mbti: null, personality_keywords: [] },
+      { name: "常诚", gender: "男", birthday_raw: "1995-03-18", birth_month: 3, birth_day: 18, zodiac: "双鱼座", chinese_zodiac: "猪", season: "春", mbti: null, personality_keywords: [] },
+      { name: "陈天明", gender: "男", birthday_raw: "1996-01-17", birth_month: 1, birth_day: 17, zodiac: "摩羯座", chinese_zodiac: "鼠", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "大锁", gender: "男", birthday_raw: "1991-04-05", birth_month: 4, birth_day: 5, zodiac: "白羊座", chinese_zodiac: "羊", season: "春", mbti: null, personality_keywords: ["幽默风趣", "能说会道", "张弛有度"] },
+      { name: "东靖川", gender: "男", birthday_raw: "1979-10-29", birth_month: 10, birth_day: 29, zodiac: "天蝎座", chinese_zodiac: "羊", season: "秋", mbti: null, personality_keywords: [] },
       { name: "高超", gender: "男", birthday_raw: "1997-11-29", birth_month: 11, birth_day: 29, zodiac: "射手座", chinese_zodiac: "牛", season: "秋", mbti: "ENFP", personality_keywords: ["安静", "细腻", "脑洞大"] },
+      { name: "高海宝", gender: "男", birthday_raw: "1986-05-17", birth_month: 5, birth_day: 17, zodiac: "金牛座", chinese_zodiac: "虎", season: "春", mbti: null, personality_keywords: [] },
       { name: "高越", gender: "男", birthday_raw: "1997-11-29", birth_month: 11, birth_day: 29, zodiac: "射手座", chinese_zodiac: "牛", season: "秋", mbti: "ENFP", personality_keywords: ["活泼", "高能", "感染力强"] },
-      { name: "刘旸", gender: "男", birthday_raw: "1992-12-29", birth_month: 12, birth_day: 29, zodiac: "摩羯座", chinese_zodiac: "猴", season: "冬", mbti: "INFJ", personality_keywords: [] },
-      { name: "松天硕", gender: "男", birthday_raw: "1991-04-08", birth_month: 4, birth_day: 8, zodiac: "白羊座", chinese_zodiac: "羊", season: "春", mbti: "INFP", personality_keywords: [] },
-      { name: "李治良", gender: "男", birthday_raw: "1996-02-16", birth_month: 2, birth_day: 16, zodiac: "水瓶座", chinese_zodiac: "鼠", season: "冬", mbti: "ISTJ", personality_keywords: [] },
-      { name: "王建华", gender: "男", birthday_raw: "1989-08-23", birth_month: 8, birth_day: 23, zodiac: "处女座", chinese_zodiac: "蛇", season: "夏", mbti: "ESFP", personality_keywords: [] },
+      { name: "龚英杰", gender: "男", birthday_raw: "1999-07-07", birth_month: 7, birth_day: 7, zodiac: "巨蟹座", chinese_zodiac: "兔", season: "夏", mbti: "INFP", personality_keywords: [] },
+      { name: "管乐", gender: "女", birthday_raw: "1995-08-16", birth_month: 8, birth_day: 16, zodiac: "狮子座", chinese_zodiac: "猪", season: "夏", mbti: null, personality_keywords: [] },
+      { name: "郭展豪", gender: "男", birthday_raw: "1990-07-11", birth_month: 7, birth_day: 11, zodiac: "巨蟹座", chinese_zodiac: "马", season: "夏", mbti: null, personality_keywords: [] },
+      { name: "郭耘奇", gender: "男", birthday_raw: "1995-02-15", birth_month: 2, birth_day: 15, zodiac: "水瓶座", chinese_zodiac: "猪", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "顾宇峰", gender: "男", birthday_raw: "1985-12-14", birth_month: 12, birth_day: 14, zodiac: "射手座", chinese_zodiac: "牛", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "何欢", gender: "男", birthday_raw: "1989-01-22", birth_month: 1, birth_day: 22, zodiac: "水瓶座", chinese_zodiac: "蛇", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "合文俊", gender: "男", birthday_raw: "1992-01-25", birth_month: 1, birth_day: 25, zodiac: "水瓶座", chinese_zodiac: "猴", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "胡博", gender: "男", birthday_raw: "06-23", birth_month: 6, birth_day: 23, zodiac: "巨蟹座", chinese_zodiac: null, season: "夏", mbti: null, personality_keywords: [] },
+      { name: "黄澄澄", gender: "男", birthday_raw: "1986-02-26", birth_month: 2, birth_day: 26, zodiac: "双鱼座", chinese_zodiac: "虎", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "黄潇", gender: "男", birthday_raw: "1986-11-09", birth_month: 11, birth_day: 9, zodiac: "天蝎座", chinese_zodiac: "虎", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "金霏", gender: "男", birthday_raw: "1989-04-28", birth_month: 4, birth_day: 28, zodiac: "金牛座", chinese_zodiac: "蛇", season: "春", mbti: null, personality_keywords: [] },
+      { name: "金靖", gender: "女", birthday_raw: "1992-12-23", birth_month: 12, birth_day: 23, zodiac: "摩羯座", chinese_zodiac: "猴", season: "冬", mbti: null, personality_keywords: [] },
       { name: "酷酷的滕", gender: "男", birthday_raw: "1996-09-05", birth_month: 9, birth_day: 5, zodiac: "处女座", chinese_zodiac: "鼠", season: "秋", mbti: "ESFP", personality_keywords: [] },
-      { name: "王天放", gender: "男", birthday_raw: "1994-01-15", birth_month: 1, birth_day: 15, zodiac: "摩羯座", chinese_zodiac: "狗", season: "冬", mbti: "INFP", personality_keywords: [] },
-      { name: "刘思维", gender: "男", birthday_raw: "1988-02-17", birth_month: 2, birth_day: 17, zodiac: "水瓶座", chinese_zodiac: "龙", season: "冬", mbti: "INTP", personality_keywords: [] },
-      { name: "朱美吉", gender: "女", birthday_raw: "1998-02-17", birth_month: 2, birth_day: 17, zodiac: "水瓶座", chinese_zodiac: "虎", season: "冬", mbti: "ENFP", personality_keywords: [] },
-      { name: "于莎莎", gender: "女", birthday_raw: "1985-05-30", birth_month: 5, birth_day: 30, zodiac: "双子座", chinese_zodiac: "牛", season: "春", mbti: null, personality_keywords: [] },
-      { name: "孔令美", gender: "女", birthday_raw: "1983年", birth_month: null, birth_day: null, zodiac: null, chinese_zodiac: "猪", season: null, mbti: null, personality_keywords: [] },
       { name: "雷淞然", gender: "男", birthday_raw: "1998-06-28", birth_month: 6, birth_day: 28, zodiac: "巨蟹座", chinese_zodiac: "虎", season: "夏", mbti: null, personality_keywords: [] },
-      { name: "张呈", gender: "男", birthday_raw: "1997-01-31", birth_month: 1, birth_day: 31, zodiac: "水瓶座", chinese_zodiac: "牛", season: "冬", mbti: "ENFP", personality_keywords: [] },
-      { name: "张兴朝", gender: "男", birthday_raw: "1997-10-17", birth_month: 10, birth_day: 17, zodiac: "天秤座", chinese_zodiac: "牛", season: "秋", mbti: "INFP", personality_keywords: [] },
-      { name: "杨雨光", gender: "男", birthday_raw: "1993-05-21", birth_month: 5, birth_day: 21, zodiac: "双子座", chinese_zodiac: "鸡", season: "春", mbti: null, personality_keywords: [] },
-      { name: "李明磊", gender: "男", birthday_raw: "1998-06-15", birth_month: 6, birth_day: 15, zodiac: "双子座", chinese_zodiac: "虎", season: "夏", mbti: "ESFJ", personality_keywords: [] },
-      { name: "张弛", gender: "男", birthday_raw: "1992-11-20", birth_month: 11, birth_day: 20, zodiac: "天蝎座", chinese_zodiac: "猴", season: "秋", mbti: "INFP", personality_keywords: ["文艺感性", "没有胜负欲", "从容淡然"] },
-      { name: "吕严", gender: "男", birthday_raw: "1990-01-17", birth_month: 1, birth_day: 17, zodiac: "摩羯座", chinese_zodiac: "马", season: "冬", mbti: null, personality_keywords: ["坦诚直接", "追求突破", "容易焦虑"] },
-      { name: "土豆", gender: "男", birthday_raw: "1998-06-05", birth_month: 6, birth_day: 5, zodiac: "双子座", chinese_zodiac: "虎", season: "夏", mbti: null, personality_keywords: ["内敛谨慎", "幽默深刻", "谦卑叛逆"] },
-      { name: "左凌峰", gender: "男", birthday_raw: "1991-05-10", birth_month: 5, birth_day: 10, zodiac: "金牛座", chinese_zodiac: "羊", season: "春", mbti: "ISFP", personality_keywords: [] },
-      { name: "张维伊", gender: "男", birthday_raw: "1988-01-09", birth_month: 1, birth_day: 9, zodiac: "摩羯座", chinese_zodiac: "龙", season: "冬", mbti: null, personality_keywords: [] },
-      { name: "刘同", gender: "男", birthday_raw: "1990-11-22", birth_month: 11, birth_day: 22, zodiac: "射手座", chinese_zodiac: "马", season: "秋", mbti: "ENTP", personality_keywords: [] },
+      { name: "李丁", gender: "男", birthday_raw: "01-11", birth_month: 1, birth_day: 11, zodiac: "摩羯座", chinese_zodiac: null, season: "冬", mbti: null, personality_keywords: [] },
       { name: "李逗逗", gender: "女", birthday_raw: "1995-11-21", birth_month: 11, birth_day: 21, zodiac: "天蝎座", chinese_zodiac: "猪", season: "秋", mbti: "INTP", personality_keywords: [] },
       { name: "李飞", gender: "男", birthday_raw: "1989-07-09", birth_month: 7, birth_day: 9, zodiac: "巨蟹座", chinese_zodiac: "蛇", season: "夏", mbti: "INFP", personality_keywords: ["真诚"] },
-      { name: "王皓", gender: "男", birthday_raw: "1996-08-13", birth_month: 8, birth_day: 13, zodiac: "狮子座", chinese_zodiac: "鼠", season: "夏", mbti: null, personality_keywords: ["内敛含蓄", "专注表演", "低调踏实"] },
+      { name: "李栋", gender: "男", birthday_raw: "1991-05-18", birth_month: 5, birth_day: 18, zodiac: "金牛座", chinese_zodiac: "羊", season: "春", mbti: null, personality_keywords: [] },
+      { name: "李明磊", gender: "男", birthday_raw: "1998-06-15", birth_month: 6, birth_day: 15, zodiac: "双子座", chinese_zodiac: "虎", season: "夏", mbti: "ESFJ", personality_keywords: [] },
+      { name: "李昕季晔", gender: "男", birthday_raw: "1996-07-17", birth_month: 7, birth_day: 17, zodiac: "巨蟹座", chinese_zodiac: "鼠", season: "夏", mbti: "ENFP", personality_keywords: [] },
+      { name: "李治良", gender: "男", birthday_raw: "1996-02-16", birth_month: 2, birth_day: 16, zodiac: "水瓶座", chinese_zodiac: "鼠", season: "冬", mbti: "ISTJ", personality_keywords: [] },
+      { name: "刘胜瑛", gender: "女", birthday_raw: "1992-09-09", birth_month: 9, birth_day: 9, zodiac: "处女座", chinese_zodiac: "猴", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "刘思维", gender: "男", birthday_raw: "1988-02-17", birth_month: 2, birth_day: 17, zodiac: "水瓶座", chinese_zodiac: "龙", season: "冬", mbti: "INTP", personality_keywords: [] },
+      { name: "刘同", gender: "男", birthday_raw: "1990-11-22", birth_month: 11, birth_day: 22, zodiac: "射手座", chinese_zodiac: "马", season: "秋", mbti: "ENTP", personality_keywords: [] },
+      { name: "刘旸", gender: "男", birthday_raw: "1992-12-29", birth_month: 12, birth_day: 29, zodiac: "摩羯座", chinese_zodiac: "猴", season: "冬", mbti: "INFJ", personality_keywords: [] },
+      { name: "吕严", gender: "男", birthday_raw: "1990-01-17", birth_month: 1, birth_day: 17, zodiac: "摩羯座", chinese_zodiac: "马", season: "冬", mbti: null, personality_keywords: ["坦诚直接", "追求突破", "容易焦虑"] },
+      { name: "罗圣灯", gender: "男", birthday_raw: "1998-07-25", birth_month: 7, birth_day: 25, zodiac: "狮子座", chinese_zodiac: "虎", season: "夏", mbti: null, personality_keywords: [] },
+      { name: "马旭东", gender: "男", birthday_raw: "1989-03-26", birth_month: 3, birth_day: 26, zodiac: "白羊座", chinese_zodiac: "蛇", season: "春", mbti: "ENFP", personality_keywords: [] },
+      { name: "苗若芃", gender: "男", birthday_raw: "1999-02-25", birth_month: 2, birth_day: 25, zodiac: "双鱼座", chinese_zodiac: "兔", season: "冬", mbti: "INFP", personality_keywords: [] },
+      { name: "单冠朝", gender: "男", birthday_raw: "1990-07-26", birth_month: 7, birth_day: 26, zodiac: "狮子座", chinese_zodiac: "马", season: "夏", mbti: "ISFP", personality_keywords: [] },
+      { name: "宋木子", gender: "男", birthday_raw: "1992-01-10", birth_month: 1, birth_day: 10, zodiac: "摩羯座", chinese_zodiac: "猴", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "松天硕", gender: "男", birthday_raw: "1991-04-08", birth_month: 4, birth_day: 8, zodiac: "白羊座", chinese_zodiac: "羊", season: "春", mbti: "INFP", personality_keywords: [] },
       { name: "孙天宇", gender: "男", birthday_raw: "1997-07-29", birth_month: 7, birth_day: 29, zodiac: "狮子座", chinese_zodiac: "牛", season: "夏", mbti: "INFP", personality_keywords: ["感性热情", "冲动热血", "真诚没城府"] },
-      { name: "大锁", gender: "男", birthday_raw: "1991-04-05", birth_month: 4, birth_day: 5, zodiac: "白羊座", chinese_zodiac: "羊", season: "春", mbti: null, personality_keywords: ["幽默风趣", "能说会道", "张弛有度"] }
+      { name: "泰维", gender: "男", birthday_raw: "1990-10-12", birth_month: 10, birth_day: 12, zodiac: "天秤座", chinese_zodiac: "马", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "土豆", gender: "男", birthday_raw: "1998-06-05", birth_month: 6, birth_day: 5, zodiac: "双子座", chinese_zodiac: "虎", season: "夏", mbti: null, personality_keywords: ["内敛谨慎", "幽默深刻", "谦卑叛逆"] },
+      { name: "王广", gender: "男", birthday_raw: "1999-01-26", birth_month: 1, birth_day: 26, zodiac: "水瓶座", chinese_zodiac: "兔", season: "冬", mbti: "ENFP", personality_keywords: [] },
+      { name: "王皓", gender: "男", birthday_raw: "1996-08-13", birth_month: 8, birth_day: 13, zodiac: "狮子座", chinese_zodiac: "鼠", season: "夏", mbti: null, personality_keywords: ["内敛含蓄", "专注表演", "低调踏实"] },
+      { name: "王继续", gender: "男", birthday_raw: "1994-03-09", birth_month: 3, birth_day: 9, zodiac: "双鱼座", chinese_zodiac: "狗", season: "春", mbti: "ENFP", personality_keywords: [] },
+      { name: "王男", gender: "女", birthday_raw: "1998-08-21", birth_month: 8, birth_day: 21, zodiac: "狮子座", chinese_zodiac: "虎", season: "夏", mbti: "ENFP", personality_keywords: [] },
+      { name: "王天放", gender: "男", birthday_raw: "1994-01-15", birth_month: 1, birth_day: 15, zodiac: "摩羯座", chinese_zodiac: "狗", season: "冬", mbti: "INFP", personality_keywords: [] },
+      { name: "王建华", gender: "男", birthday_raw: "1989-08-23", birth_month: 8, birth_day: 23, zodiac: "处女座", chinese_zodiac: "蛇", season: "夏", mbti: "ESFP", personality_keywords: [] },
+      { name: "武六七", gender: "男", birthday_raw: "1990-01-30", birth_month: 1, birth_day: 30, zodiac: "水瓶座", chinese_zodiac: "马", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "项倩", gender: "女", birthday_raw: "1998-04-09", birth_month: 4, birth_day: 9, zodiac: "白羊座", chinese_zodiac: "虎", season: "春", mbti: "ENFP", personality_keywords: [] },
+      { name: "谢泽成", gender: "男", birthday_raw: "1999-05-29", birth_month: 5, birth_day: 29, zodiac: "双子座", chinese_zodiac: "兔", season: "春", mbti: null, personality_keywords: [] },
+      { name: "闫佩伦", gender: "男", birthday_raw: "1992-07-03", birth_month: 7, birth_day: 3, zodiac: "巨蟹座", chinese_zodiac: "猴", season: "夏", mbti: "ENFP", personality_keywords: [] },
+      { name: "阎鹤祥", gender: "男", birthday_raw: "1981-09-14", birth_month: 9, birth_day: 14, zodiac: "处女座", chinese_zodiac: "鸡", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "杨冬麒", gender: "男", birthday_raw: "1987-10-29", birth_month: 10, birth_day: 29, zodiac: "天蝎座", chinese_zodiac: "兔", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "杨雨光", gender: "男", birthday_raw: "1993-05-21", birth_month: 5, birth_day: 21, zodiac: "双子座", chinese_zodiac: "鸡", season: "春", mbti: null, personality_keywords: [] },
+      { name: "杨佐夫", gender: "男", birthday_raw: "1989-05-13", birth_month: 5, birth_day: 13, zodiac: "金牛座", chinese_zodiac: "蛇", season: "春", mbti: "ESFP", personality_keywords: [] },
+      { name: "叶浏", gender: "男", birthday_raw: "1989-11-29", birth_month: 11, birth_day: 29, zodiac: "射手座", chinese_zodiac: "蛇", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "于莎莎", gender: "女", birthday_raw: "1985-05-30", birth_month: 5, birth_day: 30, zodiac: "双子座", chinese_zodiac: "牛", season: "春", mbti: null, personality_keywords: [] },
+      { name: "余钦南", gender: "男", birthday_raw: "1990-11-26", birth_month: 11, birth_day: 26, zodiac: "射手座", chinese_zodiac: "马", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "詹鑫（鑫仔）", gender: "男", birthday_raw: "1988-01-27", birth_month: 1, birth_day: 27, zodiac: "水瓶座", chinese_zodiac: "龙", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "张弛", gender: "男", birthday_raw: "1992-11-20", birth_month: 11, birth_day: 20, zodiac: "天蝎座", chinese_zodiac: "猴", season: "秋", mbti: "INFP", personality_keywords: ["文艺感性", "没有胜负欲", "从容淡然"] },
+      { name: "张呈", gender: "男", birthday_raw: "1997-01-31", birth_month: 1, birth_day: 31, zodiac: "水瓶座", chinese_zodiac: "牛", season: "冬", mbti: "ENFP", personality_keywords: [] },
+      { name: "张泰维", gender: "男", birthday_raw: "1986-10-29", birth_month: 10, birth_day: 29, zodiac: "天蝎座", chinese_zodiac: "虎", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "张维伊", gender: "男", birthday_raw: "1988-01-09", birth_month: 1, birth_day: 9, zodiac: "摩羯座", chinese_zodiac: "龙", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "张小婉", gender: "女", birthday_raw: "1991-07-27", birth_month: 7, birth_day: 27, zodiac: "狮子座", chinese_zodiac: "羊", season: "夏", mbti: null, personality_keywords: [] },
+      { name: "张兴朝", gender: "男", birthday_raw: "1997-10-17", birth_month: 10, birth_day: 17, zodiac: "天秤座", chinese_zodiac: "牛", season: "秋", mbti: "INFP", personality_keywords: [] },
+      { name: "张艺文", gender: "男", birthday_raw: "1994-05-21", birth_month: 5, birth_day: 21, zodiac: "双子座", chinese_zodiac: "狗", season: "春", mbti: null, personality_keywords: [] },
+      { name: "张祐维", gender: "男", birthday_raw: "1989-01-18", birth_month: 1, birth_day: 18, zodiac: "摩羯座", chinese_zodiac: "蛇", season: "冬", mbti: "INFP", personality_keywords: [] },
+      { name: "张哲华", gender: "男", birthday_raw: "1997-10-06", birth_month: 10, birth_day: 6, zodiac: "天秤座", chinese_zodiac: "牛", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "周可人", gender: "男", birthday_raw: "1995-09-27", birth_month: 9, birth_day: 27, zodiac: "天秤座", chinese_zodiac: "猪", season: "秋", mbti: "ENFJ", personality_keywords: [] },
+      { name: "周仕麒", gender: "男", birthday_raw: "1993-10-14", birth_month: 10, birth_day: 14, zodiac: "天秤座", chinese_zodiac: "鸡", season: "秋", mbti: null, personality_keywords: [] },
+      { name: "周铁男", gender: "男", birthday_raw: "1984-02-22", birth_month: 2, birth_day: 22, zodiac: "双鱼座", chinese_zodiac: "鼠", season: "冬", mbti: "ENFP", personality_keywords: [] },
+      { name: "朱美吉", gender: "女", birthday_raw: "1998-02-17", birth_month: 2, birth_day: 17, zodiac: "水瓶座", chinese_zodiac: "虎", season: "冬", mbti: "ENFP", personality_keywords: [] },
+      { name: "宗俊涛", gender: "男", birthday_raw: "1985-01-27", birth_month: 1, birth_day: 27, zodiac: "水瓶座", chinese_zodiac: "牛", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "左凌峰", gender: "男", birthday_raw: "1991-05-10", birth_month: 5, birth_day: 10, zodiac: "金牛座", chinese_zodiac: "羊", season: "春", mbti: "ISFP", personality_keywords: [] },
+      { name: "邓帅", gender: "男", birthday_raw: "1992-04-18", birth_month: 4, birth_day: 18, zodiac: "白羊座", chinese_zodiac: "猴", season: "春", mbti: "INTJ", personality_keywords: [] },
+      { name: "高颖", gender: "女", birthday_raw: "1989-08-11", birth_month: 8, birth_day: 11, zodiac: "狮子座", chinese_zodiac: "蛇", season: "夏", mbti: "ISFJ", personality_keywords: [] },
+      { name: "郭甲醛", gender: "女", birthday_raw: "1994-11-04", birth_month: 11, birth_day: 4, zodiac: "天蝎座", chinese_zodiac: "狗", season: "秋", mbti: "ESFJ", personality_keywords: [] },
+      { name: "姜牟远健", gender: "女", birthday_raw: "1987-08-30", birth_month: 8, birth_day: 30, zodiac: "处女座", chinese_zodiac: "兔", season: "夏", mbti: "ISFJ", personality_keywords: [] },
+      { name: "孔令美", gender: "女", birthday_raw: "1983年", birth_month: null, birth_day: null, zodiac: null, chinese_zodiac: "猪", season: null, mbti: null, personality_keywords: [] }
     ];
 
     const featuredArtistNames = new Set([
@@ -748,6 +801,23 @@
       const userPartnerType = getPartnerType(userProfile);
       const raw = getPartnerTagScore(userPartnerType, artist);
       return Number(((raw / 40) * 30).toFixed(2));
+    }
+
+    function getMbtiScore(userMbti, artistMbti) {
+      if (!userMbti || !artistMbti || userMbti.length !== 4 || artistMbti.length !== 4) return 10;
+      const [u1, u2, u3, u4] = userMbti.split('');
+      const [a1, a2, a3, a4] = artistMbti.split('');
+      let score = 0;
+      score += u2 === a2 ? 6.5 : 1.5;
+      score += u4 === a4 ? 5.5 : 2.5;
+      score += u1 === a1 ? 3 : 4;
+      score += u3 === a3 ? 3 : 4;
+      if (userMbti === artistMbti) score += 1.5;
+      const onlyDiffEI = u2 === a2 && u3 === a3 && u4 === a4 && u1 !== a1;
+      if (onlyDiffEI) score += 1.5;
+      if (u2 === a2 && u4 === a4) score += 1;
+      if (u2 !== a2 && u4 !== a4) score -= 2;
+      return Math.max(0, Math.min(20, Number(score.toFixed(2))));
     }
 
     function getZodiacElement(sign) {
@@ -984,19 +1054,3 @@
   </script>
 </body>
 </html>
-```
-
-把这段直接存成 `index.html`，和你的图片 `IMG_0804 3.jpg` 放在同一个文件夹里，然后：
-
-- 在 Finder 里双击 `index.html`
-- 或右键用浏览器打开
-
-就能直接跑了。
-
-你现在这套是**纯前端静态网页**，所以：
-- 不需要 Python
-- 不需要 npm
-- 不需要 React 环境
-- 只要浏览器就能开
-
-你先照这个做。开起来以后，如果你要，我下一步再帮你把**艺人数据补成全量版本**。
