@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>喜人宇宙搭档测试</title>
+  <style>
+    :root {
+      --bg1: #fff7ed;
+      --bg2: #fef3c7;
+      --bg3: #fbcfe8;
+      --ink: #111827;
+      --muted: #4b5563;
+      --card: rgba(255,255,255,0.68);
+      --line: rgba(17,24,39,0.08);
+      --shadow: 0 16px 40px rgba(244,114,182,0.18);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 38%, var(--bg3) 100%);
+      min-height: 100vh;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 20px 16px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      position: relative;
+    }
+
+    .glow {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(56px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .glow.a { width: 180px; height: 180px; left: -40px; top: -20px; background: white; }
+    .glow.b { width: 220px; height: 220px; right: -50px; bottom: -30px; background: #f9a8d4; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      border-radius: 999px;
+      font-size: 15px;
+      color: #374151;
+      box-shadow: 0 6px 18px rgba(17,24,39,0.08);
+    }
+
+    .center { text-align: center; }
+
+    h1 {
+      margin: 24px 0 12px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+    }
+
+    .sub {
+      margin: 0 auto;
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      margin-top: 22px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 16px;
+      z-index: 3;
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #111827;
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      transform: rotate(-4deg);
+      box-shadow: 0 10px 18px rgba(17,24,39,0.18);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e5e7eb;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.12) 45%, rgba(0,0,0,0));
+    }
+
+    .hero-copy {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 2;
+      color: white;
+      text-align: left;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.92;
+    }
+
+    .hero-title {
+      margin-top: 8px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .button {
+      width: 100%;
+      border: 0;
+      border-radius: 24px;
+      background: #111827;
+      color: white;
+      padding: 16px 18px;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(17,24,39,0.18);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,0.75);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      text-align: center;
+      color: #6b7280;
+    }
+    .footer-note .small { font-size: 12px; }
+    .footer-note .tiny { font-size: 11px; margin-top: 6px; }
+
+    .hidden { display: none !important; }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .card {
+      padding: 20px;
+      margin-top: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.92);
+      padding: 14px 16px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .field + .field { margin-top: 14px; }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .progress {
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    .q-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 26px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(249,115,22,0.08);
+      margin-bottom: 14px;
+    }
+
+    .q-title {
+      font-size: 18px;
+      line-height: 1.7;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .opt {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.92);
+      padding: 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .opt.active {
+      background: #111827;
+      color: white;
+      border-color: #111827;
+    }
+
+    .opt-key {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.06);
+      margin-right: 10px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .opt.active .opt-key {
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .result-hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fff7ed 35%, #fdf2f8 68%, #eef2ff 100%);
+      border-radius: 32px;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: 0 18px 40px rgba(249,115,22,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-badge {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      background: #111827;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transform: rotate(5deg);
+    }
+
+    .result-name {
+      font-size: 38px;
+      line-height: 1.05;
+      font-weight: 900;
+      margin: 10px 0 8px;
+    }
+
+    .result-sub {
+      color: #374151;
+      font-size: 16px;
+    }
+
+    .result-copy {
+      margin-top: 16px;
+      line-height: 1.85;
+      font-size: 15px;
+      color: #1f2937;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .top5-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(249,115,22,0.08);
+    }
+
+    .top5-name {
+      font-size: 24px;
+      font-weight: 900;
+      margin: 4px 0;
+    }
+
+    .chip {
+      display: inline-flex;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #111827;
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .profile-item {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(17,24,39,0.05);
+      border-radius: 18px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    @media (min-width: 520px) {
+      .container { max-width: 480px; }
+      h1 { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow a"></div>
+  <div class="glow b"></div>
+
+  <main class="page">
+    <div class="container">
+      <section id="home-screen">
+        <div class="center">
+          <span class="pill">🎭 喜人宇宙搭档测试</span>
+          <h1>测测在喜人宇宙里<br>谁是你的天选搭档</h1>
+          <p class="sub">结合你的生日、MBTI和10道题，看看哪位喜人艺人和你最合拍</p>
+        </div>
+
+        <div class="hero-card">
+          <div class="badge">Amazing Night</div>
+          <div class="hero-image-wrap">
+            <img src="./IMG_0804 3.jpg" alt="喜人拼贴图" class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="hero-copy">
+              <div class="hero-kicker">Comedy Club</div>
+              <div class="hero-title">看看谁最适合<br>和你搭成一队</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <button class="button" id="start-btn">开始测试</button>
+        </div>
+
+        <div class="footer-note">
+          <div>创作：拿铁柚子云</div>
+          <div class="tiny">本测试仅供娱乐，结果看看就好，开心最重要。</div>
+        </div>
+      </section>
+
+      <section id="form-screen" class="hidden">
+        <div class="card">
+          <div class="pill" style="font-size:12px;padding:8px 12px;">进入测试前</div>
+          <h2 class="section-title" style="margin-top:10px;">基本信息</h2>
+
+          <div class="field">
+            <label>昵称（选填）</label>
+            <input id="nickname" placeholder="输入你的昵称">
+          </div>
+
+          <div class="field">
+            <label>性别（可选）</label>
+            <select id="gender">
+              <option value="">请选择</option>
+              <option value="女">女</option>
+              <option value="男">男</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>出生年月日（必填）</label>
+            <input id="birthday" type="date">
+          </div>
+
+          <div class="field">
+            <label>MBTI（必填）</label>
+            <select id="mbti"></select>
+          </div>
+
+          <div class="actions">
+            <button class="button secondary" id="back-home-btn">返回</button>
+            <button class="button" id="to-quiz-btn">继续</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="hidden">
+        <div class="topbar">
+          <div>
+            <div class="pill" style="font-size:12px;padding:8px 12px;">正在匹配中</div>
+            <div style="margin-top:10px;font-size:28px;font-weight:900;line-height:1.2;">10道题，看看你最适合哪种喜人搭档</div>
+            <div class="progress" id="progress-text">已完成 0 / 10</div>
+          </div>
+          <button class="button secondary" id="back-form-btn" style="width:auto;padding:10px 14px;font-size:14px;">返回修改信息</button>
+        </div>
+        <div id="questions-wrap"></div>
+        <button class="button" id="to-result-btn">查看结果</button>
+      </section>
+
+      <section id="result-screen" class="hidden">
+        <div class="topbar" style="align-items:flex-end;">
+          <div>
+            <div style="font-size:13px;color:#6b7280;">你的搭档类型</div>
+            <div id="result-type-title" style="font-size:34px;font-weight:900;line-height:1.1;"></div>
+          </div>
+          <button class="button secondary" id="redo-btn" style="width:auto;padding:10px 14px;font-size:14px;">重新做题</button>
+        </div>
+
+        <div class="result-hero">
+          <div class="result-badge">最佳搭档揭晓</div>
+          <div style="font-size:13px;color:#6b7280;">你的天选搭档</div>
+          <div class="result-name" id="top1-name"></div>
+          <div class="result-sub" id="top1-meta"></div>
+          <div class="result-copy" id="top1-copy"></div>
+        </div>
+
+        <div class="grid" id="top5-wrap" style="margin-top:14px;"></div>
+
+        <div class="card">
+          <div style="font-size:18px;font-weight:800;">你的六维画像</div>
+          <div class="profile-grid" id="profile-wrap"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const mbtiOptions = [
+      "INTJ", "INTP", "ENTJ", "ENTP",
+      "INFJ", "INFP", "ENFJ", "ENFP",
+      "ISTJ", "ISFJ", "ESTJ", "ESFJ",
+      "ISTP", "ISFP", "ESTP", "ESFP",
+    ];
+
+    const artists = [
+      { name: "高超", gender: "男", birthday_raw: "1997-11-29", birth_month: 11, birth_day: 29, zodiac: "射手座", chinese_zodiac: "牛", season: "秋", mbti: "ENFP", personality_keywords: ["安静", "细腻", "脑洞大"] },
+      { name: "高越", gender: "男", birthday_raw: "1997-11-29", birth_month: 11, birth_day: 29, zodiac: "射手座", chinese_zodiac: "牛", season: "秋", mbti: "ENFP", personality_keywords: ["活泼", "高能", "感染力强"] },
+      { name: "刘旸", gender: "男", birthday_raw: "1992-12-29", birth_month: 12, birth_day: 29, zodiac: "摩羯座", chinese_zodiac: "猴", season: "冬", mbti: "INFJ", personality_keywords: [] },
+      { name: "松天硕", gender: "男", birthday_raw: "1991-04-08", birth_month: 4, birth_day: 8, zodiac: "白羊座", chinese_zodiac: "羊", season: "春", mbti: "INFP", personality_keywords: [] },
+      { name: "李治良", gender: "男", birthday_raw: "1996-02-16", birth_month: 2, birth_day: 16, zodiac: "水瓶座", chinese_zodiac: "鼠", season: "冬", mbti: "ISTJ", personality_keywords: [] },
+      { name: "王建华", gender: "男", birthday_raw: "1989-08-23", birth_month: 8, birth_day: 23, zodiac: "处女座", chinese_zodiac: "蛇", season: "夏", mbti: "ESFP", personality_keywords: [] },
+      { name: "酷酷的滕", gender: "男", birthday_raw: "1996-09-05", birth_month: 9, birth_day: 5, zodiac: "处女座", chinese_zodiac: "鼠", season: "秋", mbti: "ESFP", personality_keywords: [] },
+      { name: "王天放", gender: "男", birthday_raw: "1994-01-15", birth_month: 1, birth_day: 15, zodiac: "摩羯座", chinese_zodiac: "狗", season: "冬", mbti: "INFP", personality_keywords: [] },
+      { name: "刘思维", gender: "男", birthday_raw: "1988-02-17", birth_month: 2, birth_day: 17, zodiac: "水瓶座", chinese_zodiac: "龙", season: "冬", mbti: "INTP", personality_keywords: [] },
+      { name: "朱美吉", gender: "女", birthday_raw: "1998-02-17", birth_month: 2, birth_day: 17, zodiac: "水瓶座", chinese_zodiac: "虎", season: "冬", mbti: "ENFP", personality_keywords: [] },
+      { name: "于莎莎", gender: "女", birthday_raw: "1985-05-30", birth_month: 5, birth_day: 30, zodiac: "双子座", chinese_zodiac: "牛", season: "春", mbti: null, personality_keywords: [] },
+      { name: "孔令美", gender: "女", birthday_raw: "1983年", birth_month: null, birth_day: null, zodiac: null, chinese_zodiac: "猪", season: null, mbti: null, personality_keywords: [] },
+      { name: "雷淞然", gender: "男", birthday_raw: "1998-06-28", birth_month: 6, birth_day: 28, zodiac: "巨蟹座", chinese_zodiac: "虎", season: "夏", mbti: null, personality_keywords: [] },
+      { name: "张呈", gender: "男", birthday_raw: "1997-01-31", birth_month: 1, birth_day: 31, zodiac: "水瓶座", chinese_zodiac: "牛", season: "冬", mbti: "ENFP", personality_keywords: [] },
+      { name: "张兴朝", gender: "男", birthday_raw: "1997-10-17", birth_month: 10, birth_day: 17, zodiac: "天秤座", chinese_zodiac: "牛", season: "秋", mbti: "INFP", personality_keywords: [] },
+      { name: "杨雨光", gender: "男", birthday_raw: "1993-05-21", birth_month: 5, birth_day: 21, zodiac: "双子座", chinese_zodiac: "鸡", season: "春", mbti: null, personality_keywords: [] },
+      { name: "李明磊", gender: "男", birthday_raw: "1998-06-15", birth_month: 6, birth_day: 15, zodiac: "双子座", chinese_zodiac: "虎", season: "夏", mbti: "ESFJ", personality_keywords: [] },
+      { name: "张弛", gender: "男", birthday_raw: "1992-11-20", birth_month: 11, birth_day: 20, zodiac: "天蝎座", chinese_zodiac: "猴", season: "秋", mbti: "INFP", personality_keywords: ["文艺感性", "没有胜负欲", "从容淡然"] },
+      { name: "吕严", gender: "男", birthday_raw: "1990-01-17", birth_month: 1, birth_day: 17, zodiac: "摩羯座", chinese_zodiac: "马", season: "冬", mbti: null, personality_keywords: ["坦诚直接", "追求突破", "容易焦虑"] },
+      { name: "土豆", gender: "男", birthday_raw: "1998-06-05", birth_month: 6, birth_day: 5, zodiac: "双子座", chinese_zodiac: "虎", season: "夏", mbti: null, personality_keywords: ["内敛谨慎", "幽默深刻", "谦卑叛逆"] },
+      { name: "左凌峰", gender: "男", birthday_raw: "1991-05-10", birth_month: 5, birth_day: 10, zodiac: "金牛座", chinese_zodiac: "羊", season: "春", mbti: "ISFP", personality_keywords: [] },
+      { name: "张维伊", gender: "男", birthday_raw: "1988-01-09", birth_month: 1, birth_day: 9, zodiac: "摩羯座", chinese_zodiac: "龙", season: "冬", mbti: null, personality_keywords: [] },
+      { name: "刘同", gender: "男", birthday_raw: "1990-11-22", birth_month: 11, birth_day: 22, zodiac: "射手座", chinese_zodiac: "马", season: "秋", mbti: "ENTP", personality_keywords: [] },
+      { name: "李逗逗", gender: "女", birthday_raw: "1995-11-21", birth_month: 11, birth_day: 21, zodiac: "天蝎座", chinese_zodiac: "猪", season: "秋", mbti: "INTP", personality_keywords: [] },
+      { name: "李飞", gender: "男", birthday_raw: "1989-07-09", birth_month: 7, birth_day: 9, zodiac: "巨蟹座", chinese_zodiac: "蛇", season: "夏", mbti: "INFP", personality_keywords: ["真诚"] },
+      { name: "王皓", gender: "男", birthday_raw: "1996-08-13", birth_month: 8, birth_day: 13, zodiac: "狮子座", chinese_zodiac: "鼠", season: "夏", mbti: null, personality_keywords: ["内敛含蓄", "专注表演", "低调踏实"] },
+      { name: "孙天宇", gender: "男", birthday_raw: "1997-07-29", birth_month: 7, birth_day: 29, zodiac: "狮子座", chinese_zodiac: "牛", season: "夏", mbti: "INFP", personality_keywords: ["感性热情", "冲动热血", "真诚没城府"] },
+      { name: "大锁", gender: "男", birthday_raw: "1991-04-05", birth_month: 4, birth_day: 5, zodiac: "白羊座", chinese_zodiac: "羊", season: "春", mbti: null, personality_keywords: ["幽默风趣", "能说会道", "张弛有度"] }
+    ];
+
+    const featuredArtistNames = new Set([
+      "刘旸", "松天硕", "李治良", "王建华", "酷酷的滕", "王天放", "高超", "高越", "刘思维", "朱美吉",
+      "于莎莎", "孔令美", "雷淞然", "张呈", "张兴朝", "杨雨光", "李明磊", "张弛", "吕严", "土豆", "左凌峰", "张维伊", "刘同"
+    ]);
+
+    const questions = [
+      { id: 1, text: "和搭档刚上台，现场突然出了点小状况（比如话筒没声、道具掉了）。你更可能会：", options: [
+        { key: "A", text: "现挂救场，顺手把它变成笑点然后回归正轨", delta: { energy: 2, improv: 1, spark: 1 } },
+        { key: "B", text: "先看搭档怎么反应，再补一句配合收场", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "装作什么都能发生，尽量把节奏拉回原来排好的", delta: { structure: 2, support: 1 } },
+        { key: "D", text: "干脆和他一起越演越歪，看能不能更好笑", delta: { improv: 2, brain: 1, spark: 1 } },
+      ]},
+      { id: 2, text: "你最想要的喜剧搭档是哪种人？", options: [
+        { key: "A", text: "一上来就能把场子点着的", delta: { energy: 2, spark: 1 } },
+        { key: "B", text: "不一定最闹，但永远能台上配合好", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "脑回路清奇，能和你越聊越离谱", delta: { brain: 2, improv: 1 } },
+        { key: "D", text: "节奏稳到让你觉得特别踏实", delta: { structure: 2, support: 1 } },
+      ]},
+      { id: 3, text: "一起写本子的时候，你通常更像：", options: [
+        { key: "A", text: "先扔一堆天马行空的Game点出来", delta: { brain: 2, improv: 1 } },
+        { key: "B", text: "把乱糟糟的Game点整理成能用的结构", delta: { structure: 2, support: 1 } },
+        { key: "C", text: "一直琢磨“观众到底吃不吃这套”", delta: { support: 1, structure: 1, spark: 1 } },
+        { key: "D", text: "边聊边改，不想一开始就框死", delta: { improv: 2, brain: 1 } },
+      ]},
+      { id: 4, text: "你最偏好哪种搭档关系？", options: [
+        { key: "A", text: "两个人都闹腾炸场，能量爆棚", delta: { energy: 2, spark: 2 } },
+        { key: "B", text: "一个闹一个稳，动静互补", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "表面都不闹，然后互相了解托举", delta: { support: 2, brain: 1 } },
+        { key: "D", text: "明明气场不一样，偏偏特别搭", delta: { spark: 2, brain: 1 } },
+      ]},
+      { id: 5, text: "在朋友堆里，你更像哪种人？", options: [
+        { key: "A", text: "第一个把气氛炒热的", delta: { energy: 2, spark: 1 } },
+        { key: "B", text: "不怎么显眼，但很照顾别人情绪", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "突然冒一句怪话，然后把全场笑翻", delta: { brain: 2, spark: 1 } },
+        { key: "D", text: "平时不怎么说话，但关键时刻很靠得住", delta: { structure: 2, support: 1 } },
+      ]},
+      { id: 6, text: "搭档在台上突然忘词了，你第一反应是：", options: [
+        { key: "A", text: "直接帮他圆回来，顺便再抛一个新梗", delta: { improv: 2, spark: 1, energy: 1 } },
+        { key: "B", text: "给他个暗示，然后慢慢拉回原定节奏", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "假装一切都在计划里，继续往下演", delta: { structure: 2, support: 1 } },
+        { key: "D", text: "和他一起现场瞎编现挂", delta: { improv: 2, brain: 1, spark: 1 } },
+      ]},
+      { id: 7, text: "你更喜欢哪种喜剧节奏？", options: [
+        { key: "A", text: "快、密、热闹，一波接一波", delta: { energy: 2, spark: 1 } },
+        { key: "B", text: "前面慢慢铺垫，后面一下炸开", delta: { structure: 1, spark: 2 } },
+        { key: "C", text: "松弛自然，但越看越有味儿", delta: { support: 1, brain: 1, improv: 1 } },
+        { key: "D", text: "表面正常，实际上越来越离谱", delta: { brain: 2, improv: 1 } },
+      ]},
+      { id: 8, text: "如果只用一个词形容你理想中的搭档关系，你选：", options: [
+        { key: "A", text: "一起炸场", delta: { energy: 2, spark: 1 } },
+        { key: "B", text: "互相兜底", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "灵魂同频", delta: { brain: 1, support: 1, improv: 1 } },
+        { key: "D", text: "性格反差", delta: { spark: 2, brain: 1 } },
+      ]},
+      { id: 9, text: "合作里你最怕碰到哪种搭档？", options: [
+        { key: "A", text: "节奏太慢，跟不上你的节奏", delta: { energy: 2, spark: 1 } },
+        { key: "B", text: "太爱抢戏，完全不给你发挥的机会", delta: { support: 2, structure: 1 } },
+        { key: "C", text: "太飘，点子飞了一堆但落不了地", delta: { structure: 2, brain: 1 } },
+        { key: "D", text: "太闷，你说十句他回你一个字", delta: { energy: 1, support: 1, spark: 1 } },
+      ]},
+      { id: 10, text: "假如真进了喜人宇宙，你最想当哪个角色？", options: [
+        { key: "A", text: "怪人", delta: { brain: 2, improv: 1, spark: 1 } },
+        { key: "B", text: "直人", delta: { support: 2, structure: 2 } },
+      ]},
+    ];
+
+    const screens = {
+      home: document.getElementById('home-screen'),
+      form: document.getElementById('form-screen'),
+      quiz: document.getElementById('quiz-screen'),
+      result: document.getElementById('result-screen'),
+    };
+
+    const state = {
+      nickname: '',
+      gender: '',
+      birthday: '',
+      mbti: '',
+      answers: {},
+      result: null,
+    };
+
+    const mbtiSelect = document.getElementById('mbti');
+    mbtiSelect.innerHTML = `<option value="">请选择你的MBTI</option>` + mbtiOptions.map(m => `<option value="${m}">${m}</option>`).join('');
+
+    function showScreen(name) {
+      Object.values(screens).forEach(el => el.classList.add('hidden'));
+      screens[name].classList.remove('hidden');
+    }
+
+    function getUserProfile() {
+      const base = { energy: 0, support: 0, improv: 0, structure: 0, brain: 0, spark: 0 };
+      Object.values(state.answers).forEach(opt => {
+        Object.entries(opt.delta).forEach(([k, v]) => base[k] += v);
+      });
+      return base;
+    }
+
+    function getPartnerType(profile) {
+      const e = profile.energy + profile.spark;
+      const s = profile.support + profile.structure;
+      const b = profile.brain + profile.improv;
+      const all = [
+        ["高能点火型", e],
+        ["稳定兜底型", s],
+        ["脑洞共振型", b],
+      ].sort((a,b) => b[1]-a[1]);
+      const top = all[0][0];
+      const second = all[1][0];
+      if (top === "高能点火型" && second === "脑洞共振型") return "欢喜冤家型";
+      if (top === "稳定兜底型" && second === "脑洞共振型") return "反差互补型";
+      if (top === "脑洞共振型" && second === "稳定兜底型") return "灵魂同频型";
+      return top;
+    }
+
+    function getKeywordCategory(kw) {
+      const map = {
+        energy: ["活泼", "高能", "感染力强", "冲动热血"],
+        support: ["细腻", "真诚", "内敛含蓄", "感性热情"],
+        improv: ["现挂", "即兴", "灵活"],
+        structure: ["低调踏实", "专注表演", "张弛有度", "靠谱"],
+        brain: ["脑洞大", "文艺感性", "追求突破", "幽默深刻"],
+        spark: ["幽默风趣", "能说会道", "坦诚直接", "叛逆"],
+      };
+      for (const [cat, arr] of Object.entries(map)) {
+        if (arr.some(x => kw.includes(x))) return cat;
+      }
+      return null;
+    }
+
+    function getArtistPartnerTags(artist) {
+      const keywords = artist.personality_keywords || [];
+      const mbti = artist.mbti || "";
+      const season = artist.season;
+      const zodiacElement = artist.zodiac ? getZodiacElement(artist.zodiac) : null;
+      let primary = null;
+      let secondary = null;
+
+      const keywordCats = keywords.map(getKeywordCategory).filter(Boolean);
+      const counts = keywordCats.reduce((acc, cat) => { acc[cat] = (acc[cat]||0)+1; return acc; }, {});
+      const keywordScore = {
+        high: (counts.energy||0) + (counts.spark||0),
+        stable: (counts.support||0) + (counts.structure||0),
+        brainy: (counts.brain||0) + (counts.improv||0),
+      };
+      const bestKeywordBucket = Object.entries(keywordScore).sort((a,b)=>b[1]-a[1])[0];
+      if (bestKeywordBucket && bestKeywordBucket[1] > 0) {
+        if (bestKeywordBucket[0] === 'high') primary = '高能点火型';
+        if (bestKeywordBucket[0] === 'stable') primary = '稳定兜底型';
+        if (bestKeywordBucket[0] === 'brainy') primary = '脑洞共振型';
+      }
+      if (!primary) {
+        if (mbti.includes('N') && mbti.includes('P')) primary = '脑洞共振型';
+        else if (mbti.includes('F') && mbti.includes('I')) primary = '灵魂同频型';
+        else if (mbti.includes('E') && mbti.includes('P')) primary = '高能点火型';
+        else if (mbti.includes('J') || mbti.includes('T')) primary = '稳定兜底型';
+      }
+      if (!primary) {
+        if (season === '夏') primary = '高能点火型';
+        else if (season === '冬') primary = '灵魂同频型';
+        else if (season === '秋') primary = '稳定兜底型';
+        else if (season === '春') primary = '脑洞共振型';
+        else primary = '灵魂同频型';
+      }
+
+      if (zodiacElement === '火') secondary = '高能点火型';
+      if (zodiacElement === '土') secondary = '稳定兜底型';
+      if (zodiacElement === '风') secondary = '反差互补型';
+      if (zodiacElement === '水') secondary = '灵魂同频型';
+
+      if (!secondary || secondary === primary) {
+        if (primary === '高能点火型') {
+          if (mbti.includes('F') || keywordCats.includes('support')) secondary = '欢喜冤家型';
+          else if (keywordCats.includes('structure') || mbti.includes('J')) secondary = '反差互补型';
+        } else if (primary === '稳定兜底型') {
+          if (mbti.includes('F') || keywordCats.includes('brain')) secondary = '灵魂同频型';
+          else if (mbti.includes('P') || keywordCats.includes('spark')) secondary = '反差互补型';
+        } else if (primary === '脑洞共振型') {
+          if (mbti.includes('F') || keywordCats.includes('support')) secondary = '灵魂同频型';
+          else if (mbti.includes('E') || keywordCats.includes('spark')) secondary = '反差互补型';
+        } else if (primary === '灵魂同频型') {
+          if (keywordCats.includes('structure') || mbti.includes('J')) secondary = '稳定兜底型';
+          else if (keywordCats.includes('brain') || mbti.includes('N')) secondary = '脑洞共振型';
+        }
+      }
+      return secondary && secondary !== primary ? [primary, secondary] : [primary];
+    }
+
+    function getPartnerTagScore(userPartnerType, artist) {
+      const tags = getArtistPartnerTags(artist);
+      const [primary, secondary] = tags;
+      const relatedMap = {
+        "高能点火型": ["欢喜冤家型", "反差互补型"],
+        "稳定兜底型": ["灵魂同频型", "反差互补型"],
+        "脑洞共振型": ["灵魂同频型", "反差互补型"],
+        "灵魂同频型": ["稳定兜底型", "脑洞共振型"],
+        "欢喜冤家型": ["高能点火型", "反差互补型"],
+        "反差互补型": ["高能点火型", "稳定兜底型", "脑洞共振型", "欢喜冤家型"],
+      };
+      if (primary === userPartnerType) return 40;
+      if (secondary === userPartnerType) return 34;
+      if ((relatedMap[userPartnerType] || []).includes(primary)) return 28;
+      if (secondary && (relatedMap[userPartnerType] || []).includes(secondary)) return 22;
+      return 14;
+    }
+
+    function getQuestionScore(userProfile, artist) {
+      const userPartnerType = getPartnerType(userProfile);
+      const raw = getPartnerTagScore(userPartnerType, artist);
+      return Number(((raw / 40) * 30).toFixed(2));
+    }
+
+    function getZodiacElement(sign) {
+      if (["白羊座", "狮子座", "射手座"].includes(sign)) return "火";
+      if (["金牛座", "处女座", "摩羯座"].includes(sign)) return "土";
+      if (["双子座", "天秤座", "水瓶座"].includes(sign)) return "风";
+      if (["巨蟹座", "天蝎座", "双鱼座"].includes(sign)) return "水";
+      return null;
+    }
+
+    function getZodiacScore(userSign, artistSign) {
+      if (!userSign || !artistSign) return 7.5;
+      if (userSign === artistSign) return 15;
+      const u = getZodiacElement(userSign);
+      const a = getZodiacElement(artistSign);
+      if (u === a) return 11.5;
+      const pair = `${u}-${a}`;
+      if (["火-风", "风-火", "土-水", "水-土"].includes(pair)) return 8;
+      return 5;
+    }
+
+    function getChineseZodiacScore(userAnimal, artistAnimal) {
+      if (!userAnimal || !artistAnimal) return 7.5;
+      if (userAnimal === artistAnimal) return 15;
+      const six = [["鼠", "牛"], ["虎", "猪"], ["兔", "狗"], ["龙", "鸡"], ["蛇", "猴"], ["马", "羊"]];
+      const conflict = [["鼠", "马"], ["牛", "羊"], ["虎", "猴"], ["兔", "鸡"], ["龙", "狗"], ["蛇", "猪"]];
+      if (six.some(g => g.includes(userAnimal) && g.includes(artistAnimal))) return 12;
+      const groups = [
+        ["鼠", "龙", "猴"],
+        ["牛", "蛇", "鸡"],
+        ["虎", "马", "狗"],
+        ["兔", "羊", "猪"],
+      ];
+      if (groups.some(g => g.includes(userAnimal) && g.includes(artistAnimal))) return 12;
+      if (conflict.some(g => g.includes(userAnimal) && g.includes(artistAnimal))) return 4;
+      return 8;
+    }
+
+    function getSeasonScore(userSeason, artistSeason) {
+      if (!userSeason || !artistSeason) return 3;
+      if (userSeason === artistSeason) return 5;
+      const adjacent = ["春-夏", "夏-秋", "秋-冬", "冬-春", "夏-春", "秋-夏", "冬-秋", "春-冬"];
+      if (adjacent.includes(`${userSeason}-${artistSeason}`)) return 3;
+      return 1;
+    }
+
+    function getKeywordScore(userProfile, artistKeywords) {
+      if (!artistKeywords || artistKeywords.length === 0) return 8;
+      const top3 = Object.entries(userProfile).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k]) => k);
+      let score = 0;
+      artistKeywords.forEach(kw => {
+        const cat = getKeywordCategory(kw);
+        if (cat && top3.includes(cat)) score += 3;
+      });
+      return Math.max(8, Math.min(15, score));
+    }
+
+    function getFeaturedArtistBonus(name) {
+      return featuredArtistNames.has(name) ? 1.5 : 0;
+    }
+
+    function getZodiacFromDate(dateStr) {
+      const [, m, d] = dateStr.split('-').map(Number);
+      const x = m * 100 + d;
+      if (x >= 321 && x <= 419) return "白羊座";
+      if (x >= 420 && x <= 520) return "金牛座";
+      if (x >= 521 && x <= 621) return "双子座";
+      if (x >= 622 && x <= 722) return "巨蟹座";
+      if (x >= 723 && x <= 822) return "狮子座";
+      if (x >= 823 && x <= 922) return "处女座";
+      if (x >= 923 && x <= 1023) return "天秤座";
+      if (x >= 1024 && x <= 1122) return "天蝎座";
+      if (x >= 1123 && x <= 1221) return "射手座";
+      if ((x >= 1222 && x <= 1231) || (x >= 101 && x <= 119)) return "摩羯座";
+      if (x >= 120 && x <= 218) return "水瓶座";
+      return "双鱼座";
+    }
+
+    function getChineseZodiacFromYear(year) {
+      if (!year) return null;
+      const animals = ["猴", "鸡", "狗", "猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊"];
+      return animals[year % 12];
+    }
+
+    function getSeasonFromDate(dateStr) {
+      const [, m] = dateStr.split('-').map(Number);
+      if ([3,4,5].includes(m)) return "春";
+      if ([6,7,8].includes(m)) return "夏";
+      if ([9,10,11].includes(m)) return "秋";
+      return "冬";
+    }
+
+    function getResultCopy(type, artist, userProfile, userMbti) {
+      const artistTags = getArtistPartnerTags(artist);
+      const mbtiTone = artist.mbti && userMbti
+        ? (artist.mbti === userMbti ? "你们有一种天然同频的熟悉感，像认识很久了。" : "你们不是完全一样，但反而更容易撞出东西来。")
+        : "你们的默契感，像在舞台上慢慢长出来的，不是硬凑的。";
+      const typeText = {
+        "高能点火型": "你负责点起来，他负责推上去。你俩属于一个扔炸弹、一个收蘑菇云的那种组合。",
+        "稳定兜底型": "你尽管往前冲，他在后面给你兜着。天塌下来他先顶着，你负责在上面蹦跶就行。",
+        "脑洞共振型": "你们最容易在正常人听不懂的点子里笑成一片。别人觉得莫名其妙，你俩觉得这是灵魂暗号。",
+        "灵魂同频型": "你们不一定是最吵的那一组，但一定是最懂对方的那一组。一个眼神，甚至一个停顿，彼此都明白。",
+        "欢喜冤家型": "你一句他一句，越怼越来劲。表面在拆台，其实比谁都默契。这种拉扯感，太上头了。",
+        "反差互补型": "你们一个快一个慢，一个热一个冷。放在别人那儿可能别扭，放你俩这儿刚好是火花。",
+      };
+      let strongText = "他在节奏和状态上会让这组搭配更完整。";
+      if (artistTags.includes("稳定兜底型")) strongText = "他很有接球感和承接感。";
+      else if (artistTags.includes("高能点火型") || artistTags.includes("欢喜冤家型")) strongText = "他很容易把互动张力拉满。";
+      else if (artistTags.includes("脑洞共振型")) strongText = "他身上有很强的脑洞和创意感。";
+      return `${typeText[type]} ${strongText} ${mbtiTone}`;
+    }
+
+    function renderQuestions() {
+      const wrap = document.getElementById('questions-wrap');
+      wrap.innerHTML = questions.map(q => `
+        <div class="q-card">
+          <div class="q-title">Q${q.id}. ${q.text}</div>
+          ${q.options.map(opt => `
+            <button class="opt ${state.answers[q.id]?.key === opt.key ? 'active' : ''}" data-qid="${q.id}" data-key="${opt.key}">
+              <span class="opt-key">${opt.key}</span>${opt.text}
+            </button>
+          `).join('')}
+        </div>
+      `).join('');
+      document.getElementById('progress-text').textContent = `已完成 ${Object.keys(state.answers).length} / ${questions.length}`;
+
+      wrap.querySelectorAll('.opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const qid = Number(btn.dataset.qid);
+          const key = btn.dataset.key;
+          const q = questions.find(x => x.id === qid);
+          const opt = q.options.find(x => x.key === key);
+          state.answers[qid] = opt;
+          renderQuestions();
+        });
+      });
+    }
+
+    function computeResult() {
+      const userProfile = getUserProfile();
+      const partnerType = getPartnerType(userProfile);
+      const userZodiac = getZodiacFromDate(state.birthday);
+      const userSeason = getSeasonFromDate(state.birthday);
+      const userAnimal = getChineseZodiacFromYear(Number(state.birthday.slice(0,4)));
+
+      const ranked = artists.map(artist => {
+        const questionScore = getQuestionScore(userProfile, artist);
+        const mbtiScore = getMbtiScore(state.mbti, artist.mbti);
+        const zodiacScore = getZodiacScore(userZodiac, artist.zodiac);
+        const zodiacAnimalScore = getChineseZodiacScore(userAnimal, artist.chinese_zodiac);
+        const seasonScore = getSeasonScore(userSeason, artist.season);
+        const keywordScore = getKeywordScore(userProfile, artist.personality_keywords);
+        const featuredBonus = getFeaturedArtistBonus(artist.name);
+        const total = Number((questionScore + mbtiScore + zodiacScore + zodiacAnimalScore + seasonScore + keywordScore + featuredBonus).toFixed(2));
+        return {
+          ...artist,
+          total,
+          percent: Math.round(total),
+          partnerType,
+          copy: getResultCopy(partnerType, artist, userProfile, state.mbti),
+        };
+      }).sort((a,b) => {
+        if (b.total !== a.total) return b.total - a.total;
+        return Math.random() - 0.5;
+      });
+
+      state.result = {
+        partnerType,
+        userProfile,
+        top5: ranked.slice(0,5),
+      };
+    }
+
+    function renderResult() {
+      const result = state.result;
+      const first = result.top5[0];
+      document.getElementById('result-type-title').textContent = result.partnerType;
+      document.getElementById('top1-name').textContent = first.name;
+      document.getElementById('top1-meta').textContent = `匹配度 ${first.percent}% · ${first.partnerType}`;
+      document.getElementById('top1-copy').textContent = first.copy;
+
+      document.getElementById('top5-wrap').innerHTML = result.top5.map((artist, idx) => `
+        <div class="top5-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <div style="font-size:12px;color:#6b7280;">TOP ${idx + 1}</div>
+            <div>🎬</div>
+          </div>
+          <div class="top5-name">${artist.name}</div>
+          <div style="color:#374151;font-size:14px;">匹配度 ${artist.percent}%</div>
+          <div class="chip">${artist.partnerType}</div>
+          <div style="margin-top:10px;color:#374151;line-height:1.75;font-size:14px;">${artist.copy}</div>
+        </div>
+      `).join('');
+
+      const nameMap = { energy: '气氛值', support: '承接值', improv: '即兴值', structure: '稳定值', brain: '脑洞值', spark: '火花值' };
+      document.getElementById('profile-wrap').innerHTML = Object.entries(result.userProfile).map(([k,v]) => `
+        <div class="profile-item"><span>${nameMap[k]}</span><strong>${v}</strong></div>
+      `).join('');
+    }
+
+    document.getElementById('start-btn').addEventListener('click', () => showScreen('form'));
+    document.getElementById('back-home-btn').addEventListener('click', () => showScreen('home'));
+    document.getElementById('back-form-btn').addEventListener('click', () => showScreen('form'));
+    document.getElementById('redo-btn').addEventListener('click', () => {
+      state.answers = {};
+      renderQuestions();
+      showScreen('quiz');
+    });
+
+    document.getElementById('to-quiz-btn').addEventListener('click', () => {
+      state.nickname = document.getElementById('nickname').value.trim();
+      state.gender = document.getElementById('gender').value;
+      state.birthday = document.getElementById('birthday').value;
+      state.mbti = document.getElementById('mbti').value;
+      if (!state.birthday || !state.mbti) {
+        alert('请先填写出生年月日和 MBTI。');
+        return;
+      }
+      renderQuestions();
+      showScreen('quiz');
+    });
+
+    document.getElementById('to-result-btn').addEventListener('click', () => {
+      if (Object.keys(state.answers).length !== questions.length) {
+        alert('请先做完全部题目。');
+        return;
+      }
+      computeResult();
+      renderResult();
+      showScreen('result');
+    });
+
+    showScreen('home');
+  </script>
+</body>
+</html>
+```
+
+把这段直接存成 `index.html`，和你的图片 `IMG_0804 3.jpg` 放在同一个文件夹里，然后：
+
+- 在 Finder 里双击 `index.html`
+- 或右键用浏览器打开
+
+就能直接跑了。
+
+你现在这套是**纯前端静态网页**，所以：
+- 不需要 Python
+- 不需要 npm
+- 不需要 React 环境
+- 只要浏览器就能开
+
+你先照这个做。开起来以后，如果你要，我下一步再帮你把**艺人数据补成全量版本**。
