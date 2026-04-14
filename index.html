@@ -220,6 +220,15 @@
       padding: 12px 14px;
       font-size: 15px;
       outline: none;
+      min-height: 56px;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .birthday-row {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 10px;
     }
 
     .field + .field { margin-top: 14px; }
@@ -461,6 +470,12 @@
         border-radius: 14px;
         padding: 11px 12px;
         font-size: 14px;
+        min-height: 52px;
+      }
+
+      .birthday-row {
+        grid-template-columns: 1.2fr 0.9fr 0.9fr;
+        gap: 8px;
       }
 
       .actions {
@@ -597,8 +612,7 @@
         </div>
 
         <div class="footer-note">
-          <div>原创创作：拿铁柚子云，全平台同id</div>
-          <div>大家喜欢麻烦赞赞我～谢谢！</div>
+          <div>创作：拿铁柚子云</div>
           <div class="tiny">本测试仅供娱乐，结果看看就好，开心最重要。</div>
         </div>
       </section>
@@ -624,7 +638,11 @@
 
           <div class="field">
             <label>出生年月日（必填）</label>
-            <input id="birthday" type="date">
+            <div class="birthday-row">
+              <select id="birth-year"></select>
+              <select id="birth-month"></select>
+              <select id="birth-day"></select>
+            </div>
           </div>
 
           <div class="field">
@@ -653,21 +671,6 @@
       </section>
 
       <section id="result-screen" class="hidden">
-      <div style="margin-bottom:14px;">
-  <div style="
-    font-size:11px;
-    line-height:1.7;
-    color:#8b8b8b;
-    text-align:left;
-  ">
-    仅供娱乐｜测试想法、内容设定和网站制作都由拿铁柚子云（全平台同id）原创独立完成，公开版本以当前链接为准。喜欢的话欢迎顺手赞赞我～
-  </div>
-  <div style="
-    margin-top:10px;
-    height:1px;
-    background: linear-gradient(to right, rgba(17,24,39,0), rgba(17,24,39,0.12), rgba(17,24,39,0));
-  "></div>
-</div>
         <div class="topbar" style="align-items:flex-end;">
           <div>
             <div style="font-size:13px;color:#6b7280;">你的搭档类型</div>
@@ -870,6 +873,48 @@
 
     const mbtiSelect = document.getElementById('mbti');
     mbtiSelect.innerHTML = `<option value="">请选择你的MBTI</option>` + mbtiOptions.map(m => `<option value="${m}">${m}</option>`).join('');
+
+    const birthYearSelect = document.getElementById('birth-year');
+    const birthMonthSelect = document.getElementById('birth-month');
+    const birthDaySelect = document.getElementById('birth-day');
+
+    function populateBirthdaySelects() {
+      const currentYear = new Date().getFullYear();
+      birthYearSelect.innerHTML = `<option value="">年份</option>` + Array.from({ length: currentYear - 1959 }, (_, i) => {
+        const year = currentYear - i;
+        return `<option value="${year}">${year}年</option>`;
+      }).join('');
+
+      birthMonthSelect.innerHTML = `<option value="">月份</option>` + Array.from({ length: 12 }, (_, i) => {
+        const month = i + 1;
+        return `<option value="${month}">${month}月</option>`;
+      }).join('');
+
+      updateBirthDayOptions();
+    }
+
+    function getDaysInMonth(year, month) {
+      if (!year || !month) return 31;
+      return new Date(Number(year), Number(month), 0).getDate();
+    }
+
+    function updateBirthDayOptions() {
+      const year = birthYearSelect.value;
+      const month = birthMonthSelect.value;
+      const currentDay = birthDaySelect.value;
+      const days = getDaysInMonth(year, month);
+      birthDaySelect.innerHTML = `<option value="">日期</option>` + Array.from({ length: days }, (_, i) => {
+        const day = i + 1;
+        return `<option value="${day}">${day}日</option>`;
+      }).join('');
+      if (currentDay && Number(currentDay) <= days) {
+        birthDaySelect.value = currentDay;
+      }
+    }
+
+    birthYearSelect.addEventListener('change', updateBirthDayOptions);
+    birthMonthSelect.addEventListener('change', updateBirthDayOptions);
+    populateBirthdaySelects();
 
     function showScreen(name) {
       Object.values(screens).forEach(el => el.classList.add('hidden'));
@@ -1223,7 +1268,12 @@
     document.getElementById('to-quiz-btn').addEventListener('click', () => {
       state.nickname = document.getElementById('nickname').value.trim();
       state.gender = document.getElementById('gender').value;
-      state.birthday = document.getElementById('birthday').value;
+      const birthYear = birthYearSelect.value;
+      const birthMonth = birthMonthSelect.value;
+      const birthDay = birthDaySelect.value;
+      state.birthday = birthYear && birthMonth && birthDay
+        ? `${birthYear}-${String(birthMonth).padStart(2, '0')}-${String(birthDay).padStart(2, '0')}`
+        : '';
       state.mbti = document.getElementById('mbti').value;
       if (!state.birthday || !state.mbti) {
         alert('请先填写出生年月日和 MBTI。');
